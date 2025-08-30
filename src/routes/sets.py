@@ -1,5 +1,9 @@
 from fastapi import APIRouter, HTTPException
-from ..services import sets as sets_service
+
+# Similar to the cards route, use an absolute import for the service layer to
+# avoid issues when the module is imported as part of the application
+# initialisation.
+from services import sets as sets_service
 
 router = APIRouter(prefix="/sets", tags=["sets"])
 

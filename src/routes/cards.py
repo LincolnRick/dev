@@ -1,5 +1,11 @@
 from fastapi import APIRouter, HTTPException
-from ..services import cards as cards_service
+
+# Import the card service using an absolute import.  The previous relative
+# import attempted to traverse beyond the top-level package when the module
+# was imported as part of the application start-up, leading to an
+# ``ImportError``.  Using an absolute import keeps the module usable both when
+# running the app and during test collection.
+from services import cards as cards_service
 
 router = APIRouter(prefix="/cards", tags=["cards"])
 
